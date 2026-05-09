@@ -21,6 +21,5 @@ pipeline {
                 sh 'echo "Deploy realizado com sucesso!"'
             }
         }
-
     }
 }
