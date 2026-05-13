@@ -2,24 +2,38 @@ pipeline {
     agent any
 
     stages {
-
+        stage('Checkout') {
+            steps {
+                echo 'Buscando código do repositório...'
+                // Aqui simula a integração com Git
+            }
+        }
+        
         stage('Build') {
             steps {
-                sh 'echo "Iniciando Build..."'
+                echo 'Compilando o projeto...'
+                sh 'echo "Versão 1.0.0" > versao.txt'
             }
         }
 
         stage('Test') {
             steps {
-                sh 'echo "Executando testes..."'
-                sh 'uname -a'
+                echo 'Executando testes unitários...'
+                sh 'echo "Testes aprovados!"'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'echo "Deploy realizado com sucesso!"'
+                echo 'Implantando em ambiente de Staging...'
+                sh 'ls -lh'
             }
+        }
+    }
+    
+    post {
+        success {
+            echo 'Pipeline finalizado com sucesso!'
         }
     }
 }
